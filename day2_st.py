@@ -1,4 +1,5 @@
 import streamlit as st
+import os
 # from langchain_huggingface import HuggingFaceEndpoint, ChatHuggingFace
 from langchain_huggingface import HuggingFaceEndpoint, ChatHuggingFace
 
@@ -7,6 +8,7 @@ from langchain_huggingface import HuggingFaceEndpoint, ChatHuggingFace
 llm = HuggingFaceEndpoint( \
 # repo_id="huggingfaceh4/zephyr-7b-alpha",  # 7B model on mistral
     repo_id="microsoft/Phi-3-mini-4k-instruct",  #3.8B model
+    huggingfacehub_api_token=os.environ['OPENAI_KEY']
 )
 
 chat = ChatHuggingFace(llm=llm, verbose=True)
